@@ -8,7 +8,7 @@
   </insert>
 
   <insert id="insertOrderItems">
-    INSERT INTO order_items (order_id, product_id, quantity, price)
+    INSERT INTO order_item (order_id, product_id, quantity, price)
     VALUES
     <foreach collection="list" item="item" separator=",">
       (#{item.orderId}, #{item.productId}, #{item.quantity}, #{item.price})
@@ -30,10 +30,6 @@
 
   <select id="findItemsByOrderId" resultType="OrderItem">
     SELECT * FROM order_items WHERE order_id = #{orderId}
-  </select>
-
-  <select id="findOrderStatusById" resultType="string">
-    SELECT status FROM orders WHERE id = #{id}
   </select>
 
 </mapper>

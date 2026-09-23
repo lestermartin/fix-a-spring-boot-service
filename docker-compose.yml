@@ -19,7 +19,7 @@ services:
   app:
     build: .
     depends_on:
-      postgres:
+      postgresql:
         condition: service_healthy
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/ecommerce

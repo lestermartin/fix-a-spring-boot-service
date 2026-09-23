@@ -1,14 +1,11 @@
-# build-a-boot-service
+# fix-a-boot-service
 
-The [Intro preso](./SpringCoreAndSpringBoot-Intro.pdf) provides background to those new to Spring and/or Spring Boot.
+This is a buggy version of [lestermartin/build-a-spring-boot-service](https://github.com/lestermartin/build-a-spring-boot-service) that can be used as a problem-solving project.
 
-The example presented in this repo is a Spring Boot REST service for placing an order and checking order status, backed by PostgreSQL via MyBatis. 
-
-It implements the roadmap provided in [*Order Service Roadmap: Spring Boot + MyBatis + PostgreSQL*](./Build-Guide.md) end to end (Steps 1–8).
+Multiple issues have been introduced that causes the solution to NOT work. Try to get it the project working well again so that you can use the following two functions. 
 
 - `POST /api/orders` — place an order
 - `GET /api/orders/{orderId}/status` — check its status
-- `GET /actuator/health` — liveness check
 
 ## Project layout
 

@@ -13,5 +13,6 @@ public interface OrderMapper {
 
     Order findOrderById(Long id);
 
+    @Select("SELECT status FROM orders WHERE id = #{id}")
     String findOrderStatusById(Long id);
 }
