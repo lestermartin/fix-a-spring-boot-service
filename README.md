@@ -1,8 +1,8 @@
 # fix-a-boot-service
 
-This is a buggy version of [lestermartin/build-a-spring-boot-service](https://github.com/lestermartin/build-a-spring-boot-service) that can be used as a problem-solving project.
+**This is a buggy version of [lestermartin/build-a-spring-boot-service](https://github.com/lestermartin/build-a-spring-boot-service) that can be used as a problem-solving project.**
 
-Multiple issues have been introduced that causes the solution to NOT work. Try to get it the project working well again so that you can use the following two functions. 
+*Multiple issues have been introduced that causes the solution to NOT work. Try to get it the project working well again so that you can use the following two functions.* 
 
 - `POST /api/orders` — place an order
 - `GET /api/orders/{orderId}/status` — check its status
