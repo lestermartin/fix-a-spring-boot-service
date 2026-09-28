@@ -1,4 +1,4 @@
-# fix-a-boot-service
+# fix-a-spring-boot-service
 
 **This is a buggy version of [lestermartin/build-a-spring-boot-service](https://github.com/lestermartin/build-a-spring-boot-service) that can be used as a problem-solving project.**
 
