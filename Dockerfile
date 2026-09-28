@@ -1,14 +1,15 @@
-FROM maven:3.9-eclipse-temurin-17 AS build
-WORKDIR /build
-COPY pom.xml .
-RUN mvn -B -q dependency:go-offline
-COPY src ./src
-RUN mvn -B -q package -DskipTests
+FROM postgres:16
 
-FROM eclipse-temurin:17-jre
-RUN apt-get update && apt-get install -y --no-install-recommends curl \
-    && rm -rf /var/lib/apt/lists/*
-WORKDIR /app
-COPY --from=build /build/target/order-service.jar app.jar
-EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENV POSTGRES_DB=ecommerce
+ENV POSTGRES_USER=app
+ENV POSTGRES_PASSWORD=app_password
+
+# Runs once on first container start against an empty data directory
+COPY ./db/schema.sql /docker-entrypoint-initdb.d/schema.sql
+
+EXPOSE 5432
+
+HEALTHCHECK --interval=5s --timeout=5s --retries=10 \
+  CMD pg_isready -U app -d ecommerce
+
+VOLUME ["/var/lib/postgresql/data"]

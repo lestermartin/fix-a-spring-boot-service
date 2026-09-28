@@ -30,27 +30,13 @@ src/test/java/...OrderServiceTest.java -- Mockito unit test
 per product id so totals are stable and repeatable for this demo. Swap it for a real
 catalog client in a production system.
 
-## Run it with Docker Compose (recommended)
 
-This builds the app image and starts both Postgres and the app, wired together.
+## Run it locally
 
-```bash
-docker compose up --build
-```
+Start the database:
 
-Wait for `app` to log `Started CatalogApplication` (or check `docker compose ps` — both
-services should show `healthy`). The API is then at `http://localhost:8080`.
-
-Stop everything with `docker compose down` (add `-v` to also drop the Postgres volume
-and start from a clean database next time).
-
-## Run it locally without Docker (alternative)
-
-Start just the database:
-
-```bash
-docker compose up postgres
-```
+docker build -t ecomm-postgres .
+docker run -d --name epg -p 5433:5432 -v pgdata:/var/lib/postgresql/data ecomm-postgres
 
 Then run the app against it:
 
@@ -58,8 +44,8 @@ Then run the app against it:
 mvn spring-boot:run
 ```
 
-The default `application.yml` already points at `localhost:5432` with the same
-credentials the compose file uses.
+The default `application.yml` points at `localhost:5433` (port swap in `docker run` above) to prevent collision if there is already a local postgres instance running and uses the same
+credentials the Dockerfile uses.
 
 ## Validating everything works
 
