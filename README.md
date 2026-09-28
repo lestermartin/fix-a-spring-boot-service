@@ -12,7 +12,6 @@
 ```
 pom.xml
 Dockerfile
-docker-compose.yml
 db/schema.sql                          -- DDL, run automatically by the postgres container
 src/main/java/com/acme/order/
   CatalogApplication.java              -- @SpringBootApplication + @MapperScan
